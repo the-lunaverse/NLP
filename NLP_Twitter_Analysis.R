@@ -22,6 +22,7 @@ api_secret <- "YOUR OWN KEY "
 access_token <- "YOUR OWN KEY "
 access_token_secret <-  "YOUR OWN KEY "
 
+#Assign all your twitter API info
 twitter_token <- create_token(
   app = "YOUR APP",
   consumer_key = api_key,
@@ -30,10 +31,13 @@ twitter_token <- create_token(
   access_secret = access_token_secret
 )
 
+#Get your Token info
 get_token()
 
-first_query <- search_tweets("Covid-19",
-                             n=1500, include_rts = FALSE, lang="en")
+#Make a query 
+first_query <- search_tweets("Covid-19", n=1500, include_rts = FALSE, lang="en")
+
+#Insect the top 5 searches
 head(first_query)
 
 
@@ -48,12 +52,12 @@ view(twitter_hi_cov)
 summer_2021 <- twitter_hi_cov[twitter_hi_cov$data.created_at >= "2021-05-01" & twitter_hi_cov$data.created_at <= "2021-07-31", ]
 view(summer_2021)
 
-# Dropping rows that have NA by indices (the first three rows have NA values for all columns)
+#Dropping rows that have NA by indices (the first three rows have NA values for all columns)
 summer_21 <- summer_2021[-c(1:26, 1587:1590, 2579:2582, 2822:3052), ]
 summer_21
 
 
-# Subset and remove NA values of each month 
+#Subset and remove NA values of each month 
 may_2021 <- summer_21[summer_21$data.created_at >= "2021-05-01" & summer_21$data.created_at <= "2021-05-31", ]
 may_2021_clean <- may_2021[-c(1:4, 621:624, 838:863), ]
 june_2021 <- summer_21[summer_21$data.created_at >= "2021-06-01" & summer_21$data.created_at <= "2021-06-30", ]
