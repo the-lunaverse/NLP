@@ -1,4 +1,3 @@
-### DS 316 Final Project ###
 
 ##Upload Libraries
 library(tidyverse)
